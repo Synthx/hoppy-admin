@@ -1,0 +1,13 @@
+<div class="navigation-item-wrapper">
+    <div class="navigation-item">
+        <div class="flex flex-col">
+            <div class="navigation-item-title">
+                <span>{{ title }}</span>
+            </div>
+            <div class="navigation-item-subtitle" *ngIf="subtitle">
+                <span>{{ subtitle }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-content></ng-content>

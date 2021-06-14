@@ -1,0 +1,4 @@
+assets/
+!/assets/i18n
+*.iml
+.DS_Store

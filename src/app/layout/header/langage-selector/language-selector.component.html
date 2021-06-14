@@ -1,0 +1,15 @@
+<ng-container *ngIf="language$ | async as currentLanguage">
+    <button mat-icon-button type="button" [matMenuTriggerFor]="languageMenu">
+        <img class="w-6 h-auto rounded-sm" src="assets/images/flags/{{ currentLanguage }}.png" alt="flag" />
+    </button>
+    <mat-menu #languageMenu>
+        <ng-container *ngFor="let language of languages">
+            <button mat-menu-item type="button" (click)="changeLanguage(language)" *ngIf="currentLanguage !== language">
+                <span class="flex items-center">
+                    <img class="w-6 h-auto rounded-sm" src="assets/images/flags/{{ language }}.png" alt="flag" />
+                    {{ 'language.' + language | translate }}
+                </span>
+            </button>
+        </ng-container>
+    </mat-menu>
+</ng-container>

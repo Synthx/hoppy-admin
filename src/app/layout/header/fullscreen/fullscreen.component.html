@@ -1,0 +1,10 @@
+<ng-container *ngIf="fullscreenOpened$ | async; else openButton">
+    <button mat-icon-button type="button" (click)="closeFullscreen()">
+        <mat-icon>fullscreen_exit</mat-icon>
+    </button>
+</ng-container>
+<ng-template #openButton>
+    <button mat-icon-button type="button" (click)="openFullscreen()">
+        <mat-icon>fullscreen</mat-icon>
+    </button>
+</ng-template>

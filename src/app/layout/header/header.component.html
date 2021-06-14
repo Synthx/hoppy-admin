@@ -1,0 +1,39 @@
+<div
+    class="
+        relative
+        flex flex-0
+        items-center
+        w-full
+        h-16
+        px-4
+        md:px-6
+        z-49
+        shadow
+        dark:shadow-none dark:border-b
+        bg-card
+        dark:bg-transparent
+        print:hidden
+    "
+>
+    <button mat-icon-button type="button" (click)="changeNavigationVisibility()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div class="flex items-center pl-2 ml-auto space-x-2">
+        <app-language-selector></app-language-selector>
+        <app-fullscreen></app-fullscreen>
+        <button mat-icon-button type="button" [matMenuTriggerFor]="userMenu" *ngIf="user$ | async as user">
+            <app-user-avatar [user]="user"></app-user-avatar>
+        </button>
+        <mat-menu #userMenu>
+            <button mat-menu-item type="button">
+                <mat-icon>user</mat-icon>
+                <span>Profile</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item type="button">
+                <mat-icon>logout</mat-icon>
+                <span>Sign out</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>

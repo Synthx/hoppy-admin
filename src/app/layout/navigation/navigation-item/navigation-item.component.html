@@ -1,0 +1,13 @@
+<div class="navigation-item-wrapper">
+    <a class="navigation-item" routerLinkActive="navigation-item-active" [routerLink]="link">
+        <mat-icon class="navigation-item-icon">{{ icon }}</mat-icon>
+        <div class="flex flex-col">
+            <div class="navigation-item-title">
+                <span>{{ label }}</span>
+            </div>
+            <div class="navigation-item-subtitle" *ngIf="!!subtitle">
+                <span>{{ subtitle }}</span>
+            </div>
+        </div>
+    </a>
+</div>

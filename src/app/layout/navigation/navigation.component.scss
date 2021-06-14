@@ -1,0 +1,59 @@
+app-navigation-group {
+    margin-top: 24px;
+}
+
+app-navigation-item {
+    margin-bottom: 4px;
+}
+
+.navigation-wrapper {
+    left: 0;
+    position: absolute;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 10;
+    background: inherit;
+}
+
+.navigation-content {
+    flex: 1 1 auto;
+    position: relative;
+    overscroll-behavior: contain;
+    overflow: hidden;
+}
+
+.navigation-item-wrapper {
+    margin: 0 12px;
+}
+
+.navigation-item {
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 16px;
+    text-decoration: none;
+    cursor: pointer;
+
+    @apply relative flex rounded-xl text-gray-400;
+
+    &.navigation-item-active {
+        @apply text-white bg-white bg-opacity-10;
+    }
+
+    .navigation-item-icon {
+        margin-right: 16px;
+    }
+
+    .navigation-item-title {
+        @apply text-sm;
+    }
+
+    .navigation-item-subtitle {
+        @apply text-xs;
+    }
+}

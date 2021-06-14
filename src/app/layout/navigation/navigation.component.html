@@ -1,0 +1,21 @@
+<div class="navigation-wrapper">
+    <div class="navigation-header">
+        <div class="flex items-center h-20 p-6 pb-0">
+            <img src="assets/images/logo.png" alt="Logo image" class="dark:hidden w-30" />
+            <img src="assets/images/logo-dark.png" alt="Logo image" class="hidden dark:flex w-30" />
+        </div>
+    </div>
+    <div class="navigation-content">
+        <app-navigation-group [title]="'navigation.dashboard.title' | translate" subtitle="test">
+            <app-navigation-item icon="home" label="Dashboard" link="/dashboard"></app-navigation-item>
+        </app-navigation-group>
+        <app-navigation-group [title]="'navigation.beer.title' | translate">
+            <app-navigation-item icon="home" label="Liste" link="/beers"></app-navigation-item>
+        </app-navigation-group>
+        <app-navigation-group [title]="'navigation.user.title' | translate"></app-navigation-group>
+        <app-navigation-group [title]="'navigation.setting.title' | translate">
+            <app-navigation-item icon="home" label="Liste" link="/auth/logout"></app-navigation-item>
+        </app-navigation-group>
+    </div>
+    <div class="navigation-footer"></div>
+</div>

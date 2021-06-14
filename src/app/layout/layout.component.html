@@ -1,0 +1,8 @@
+<app-navigation [class.opened]="navigationOpened$ | async"></app-navigation>
+<main class="flex flex-col flex-auto w-full min-w-0">
+    <app-header></app-header>
+    <div class="flex flex-col flex-auto">
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</main>
