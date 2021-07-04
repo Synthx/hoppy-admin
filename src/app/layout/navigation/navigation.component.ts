@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'app-navigation',
@@ -6,8 +6,4 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     styleUrls: ['./navigation.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class NavigationComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit(): void {}
-}
+export class NavigationComponent {}

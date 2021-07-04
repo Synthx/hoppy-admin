@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { SettingsDispatcher } from '../../../store/settings/settings-dispatcher.service';
@@ -10,7 +10,7 @@ import { SettingsSelector } from '../../../store/settings/settings-selector.serv
     templateUrl: './fullscreen.component.html',
     styleUrls: ['./fullscreen.component.scss'],
 })
-export class FullscreenComponent implements OnInit {
+export class FullscreenComponent {
     fullscreenOpened$: Observable<boolean>;
 
     constructor(
@@ -19,8 +19,6 @@ export class FullscreenComponent implements OnInit {
     ) {
         this.fullscreenOpened$ = this.settingsSelector.fullscreenOpened$.pipe(untilDestroyed(this));
     }
-
-    ngOnInit(): void {}
 
     openFullscreen(): void {
         this.settingsDispatcher.openFullscreen();

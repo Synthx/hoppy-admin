@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { Observable, of } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { SettingsSelector } from '../../store/settings/settings-selector.service
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
     user$: Observable<User>;
 
     constructor(
@@ -25,8 +25,6 @@ export class HeaderComponent implements OnInit {
             pseudo: 'Tanou',
         });
     }
-
-    ngOnInit(): void {}
 
     changeNavigationVisibility(): void {
         this.settingsSelector.navigationOpened$.pipe(first()).subscribe(opened => {

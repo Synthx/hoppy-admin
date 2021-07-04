@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../../../models/user';
 import { random } from '../../helpers/array-helper';
 
@@ -21,7 +21,7 @@ const COLORS = [
     templateUrl: './user-avatar.component.html',
     styleUrls: ['./user-avatar.component.scss'],
 })
-export class UserAvatarComponent implements OnInit {
+export class UserAvatarComponent {
     @Input()
     user!: User;
 
@@ -30,6 +30,4 @@ export class UserAvatarComponent implements OnInit {
     constructor() {
         this.color = random(COLORS)!;
     }
-
-    ngOnInit(): void {}
 }
