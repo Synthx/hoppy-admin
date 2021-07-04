@@ -2,3 +2,6 @@ assets/
 !/assets/i18n
 *.iml
 .DS_Store
+.idea/
+node_modules/
+dist/
