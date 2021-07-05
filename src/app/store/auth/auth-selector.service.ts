@@ -11,4 +11,6 @@ export class AuthSelector {
 
     loading$ = this.store.select(authSelector.loading);
     user$ = this.store.select(authSelector.user);
+
+    isLogged$ = this.store.select(authSelector.isLogged);
 }

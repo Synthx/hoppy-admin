@@ -1,0 +1,27 @@
+<div class="flex flex-col">
+    <label class="text-sm text-gray-400" [for]="name">
+        {{ 'input.' + name | translate }}
+        <span class="text-red-500" *ngIf="required">*</span>
+    </label>
+    <div
+        class="mt-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-black flex items-center"
+        [class.bg-gray-100]="readonly"
+        [class.border-red-500]="hasError"
+    >
+        <input
+            class="flex-1 px-4 py-2 bg-transparent rounded text-black dark:text-white"
+            [readOnly]="readonly"
+            [id]="name"
+            [type]="type"
+            [formControl]="control"
+            [autocomplete]="autocomplete"
+            [placeholder]="'input.' + name | translate"
+        />
+        <div [class.mr-2]="slotRef.hasChildNodes()" #slotRef>
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <div class="text-xs text-red-500 mt-1" *ngIf="hasError">
+        {{ 'input.error.' + errorCode | translate }}
+    </div>
+</div>

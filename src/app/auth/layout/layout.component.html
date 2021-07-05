@@ -1,0 +1,31 @@
+<div
+    class="
+        flex flex-col
+        h-screen
+        sm:flex-row
+        items-center
+        md:items-start
+        sm:justify-center
+        md:justify-start
+        flex-auto
+        min-w-0
+    "
+>
+    <div class="relative flex flex-col flex-1 p-4 md:p-16 bg-white h-full w-full justify-center items-stretch">
+        <router-outlet></router-outlet>
+    </div>
+    <div
+        class="relative hidden md:flex flex-1 items-center justify-center h-full p-16 bg-gray-800 cartographer-pattern"
+    >
+        <div class="z-10 relative w-full max-w-2xl">
+            <div class="text-7xl font-bold leading-none text-white inline-flex">
+                <img src="assets/images/logo.png" class="rounded-xl h-20 w-20" alt="Hoppy" />
+                <div class="ml-6">Hoppy</div>
+            </div>
+            <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
+                Fuse helps developers to build organized and well coded dashboards full of beautiful and rich modules.
+                Join us and start building your application today.
+            </div>
+        </div>
+    </div>
+</div>

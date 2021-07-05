@@ -1,5 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
@@ -49,6 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient],
             },
         }),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
         SharedModule,
         AppRoutingModule,
         AppStoreModule,
