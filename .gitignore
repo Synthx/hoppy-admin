@@ -40,6 +40,11 @@ yarn-error.log
 testem.log
 /typings
 
+# security
+.firebaserc
+src/environments/environment.*.ts
+!src/environments/global.environment.ts
+
 # System Files
 .DS_Store
 Thumbs.db
