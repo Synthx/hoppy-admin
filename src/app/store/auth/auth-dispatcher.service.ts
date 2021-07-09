@@ -9,11 +9,15 @@ import { authAction } from './auth.action';
 export class AuthDispatcher {
     constructor(private readonly store: Store<AppState>) {}
 
-    login(email: string, password: string): void {
-        this.store.dispatch(authAction.login({ email, password }));
+    login(email: string, password: string, rememberMe: boolean): void {
+        this.store.dispatch(authAction.login({ email, password, rememberMe }));
     }
 
     logout(): void {
         this.store.dispatch(authAction.logout());
+    }
+
+    forgotPassword(email: string): void {
+        this.store.dispatch(authAction.forgotPassword({ email }));
     }
 }

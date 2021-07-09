@@ -31,8 +31,8 @@ export class AuthEffect {
     login$ = createEffect(() =>
         this.actions$.pipe(
             ofType(authAction.login),
-            switchMap(({ email, password }) => {
-                return this.authService.login(email, password).pipe(
+            switchMap(({ email, password, rememberMe }) => {
+                return this.authService.login(email, password, rememberMe).pipe(
                     map(user => authAction.loginSuccess({ user })),
                     catchError(error => of(authAction.loginError({ error: error.code }))),
                 );
@@ -67,6 +67,30 @@ export class AuthEffect {
         () =>
             this.actions$.pipe(
                 ofType(authAction.logoutSuccess),
+                delay(5000),
+                tap(() => {
+                    this.router.navigate(['/auth/login']);
+                }),
+            ),
+        { dispatch: false },
+    );
+
+    forgotPassword$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(authAction.forgotPassword),
+            switchMap(({ email }) => {
+                return this.authService.forgotPassword(email).pipe(
+                    map(() => authAction.forgotPasswordSuccess()),
+                    catchError(error => of(authAction.forgotPasswordError({ error }))),
+                );
+            }),
+        ),
+    );
+
+    forgotPasswordSuccess$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(authAction.forgotPasswordSuccess),
                 delay(5000),
                 tap(() => {
                     this.router.navigate(['/auth/login']);

@@ -1,7 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Actions, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { createAction } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
@@ -51,10 +52,13 @@ describe('auth.effect', () => {
         effect = TestBed.inject(AuthEffect);
     });
 
-    describe('init', () => {
+    describe('init$', () => {
         it('should dispatch load action', () => {
+            // given
+            const action = createAction(ROOT_EFFECTS_INIT);
+
             // call
-            actions$ = hot('-a', { a: ROOT_EFFECTS_INIT });
+            actions$ = hot('-a', { a: action });
 
             // expect
             const completion = authAction.load();
@@ -103,7 +107,7 @@ describe('auth.effect', () => {
     describe('login', () => {
         it('should dispatch login-success action', () => {
             // given
-            const action = authAction.login({ email: 'test@test.com', password: 'test' });
+            const action = authAction.login({ email: 'test@test.com', password: 'test', rememberMe: true });
             const user = { id: '1' } as User;
 
             // mock
@@ -121,7 +125,7 @@ describe('auth.effect', () => {
 
         it('should dispatch login-error action on error', () => {
             // given
-            const action = authAction.login({ email: 'test@test.com', password: 'test' });
+            const action = authAction.login({ email: 'test@test.com', password: 'test', rememberMe: true });
             const error = { code: 'oops' };
 
             // mock
@@ -164,7 +168,7 @@ describe('auth.effect', () => {
             const action = authAction.logout();
 
             // mock
-            jest.spyOn(authService, 'logout').mockReturnValue(cold('-(|)'));
+            jest.spyOn(authService, 'logout').mockReturnValue(cold('-(u|)', { u: undefined }));
 
             // call
             actions$ = hot('-a', { a: action });
@@ -173,30 +177,30 @@ describe('auth.effect', () => {
             const completion = authAction.logoutSuccess();
             const expected = cold('--c', { c: completion });
 
-            expect(effect.login$).toBeObservable(expected);
+            expect(effect.logout$).toBeObservable(expected);
         });
 
-        it('should dispatch login-error action on error', () => {
+        it('should dispatch logout-error action on error', () => {
             // given
-            const action = authAction.login({ email: 'test@test.com', password: 'test' });
+            const action = authAction.logout();
             const error = { code: 'oops' };
 
             // mock
-            jest.spyOn(authService, 'login').mockReturnValue(cold('-#', undefined, error));
+            jest.spyOn(authService, 'logout').mockReturnValue(cold('-#', undefined, error));
 
             // call
             actions$ = hot('-a', { a: action });
 
             // expect
-            const completion = authAction.loginError({ error: 'oops' });
+            const completion = authAction.logoutError({ error });
             const expected = cold('--c', { c: completion });
 
-            expect(effect.login$).toBeObservable(expected);
+            expect(effect.logout$).toBeObservable(expected);
         });
     });
 
     describe('logoutSuccess', () => {
-        it('should redirect to /auth/login page', () => {
+        it('should redirect to /auth/login page', fakeAsync(() => {
             // given
             const action = authAction.logoutSuccess();
 
@@ -207,10 +211,33 @@ describe('auth.effect', () => {
             actions$ = hot('-a', { a: action });
 
             // expect
-            expect(effect.logoutSuccess$).toSatisfyOnFlush(() => {
-                expect(router.navigate).toHaveBeenCalledTimes(1);
-                expect(router.navigate).toHaveBeenCalledWith(['/auth/login']);
-            });
-        });
+            effect.logoutSuccess$.subscribe(() => {});
+
+            tick(5000);
+
+            expect(router.navigate).toHaveBeenCalledTimes(1);
+            expect(router.navigate).toHaveBeenCalledWith(['/auth/login']);
+        }));
+    });
+
+    describe('forgotPasswordSuccess', () => {
+        it('should redirect to /auth/login page', fakeAsync(() => {
+            // given
+            const action = authAction.forgotPasswordSuccess();
+
+            // mock
+            jest.spyOn(router, 'navigate').mockResolvedValue(true);
+
+            // call
+            actions$ = hot('-a', { a: action });
+
+            // expect
+            effect.forgotPasswordSuccess$.subscribe(() => {});
+
+            tick(5000);
+
+            expect(router.navigate).toHaveBeenCalledTimes(1);
+            expect(router.navigate).toHaveBeenCalledWith(['/auth/login']);
+        }));
     });
 });
