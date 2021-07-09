@@ -9,7 +9,11 @@
     <form class="mt-6" [formGroup]="loginForm" (ngSubmit)="login()">
         <app-text-field name="email" type="email" autocomplete="email" [required]="true"></app-text-field>
         <app-password-field name="password" autocomplete="current-password" class="mt-2 block"></app-password-field>
-        <div class="flex items-center w-full"></div>
+        <div class="flex items-center justify-between w-full mt-2">
+            <app-checkbox name="rememberMe">
+                {{ 'auth.login.rememberMe' | translate }}
+            </app-checkbox>
+        </div>
         <button
             mat-flat-button
             type="submit"

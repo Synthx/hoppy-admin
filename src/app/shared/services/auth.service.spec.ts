@@ -16,8 +16,10 @@ describe('AuthService', () => {
                 {
                     provide: AngularFireAuth,
                     useValue: {
+                        setPersistence: jest.fn(),
                         signInWithEmailAndPassword: jest.fn(),
                         signOut: jest.fn(),
+                        sendPasswordResetEmail: jest.fn(),
                     },
                 },
             ],
@@ -69,11 +71,11 @@ describe('AuthService', () => {
             const credential = {} as any;
 
             // mock
+            jest.spyOn(auth, 'setPersistence').mockResolvedValue();
             jest.spyOn(auth, 'signInWithEmailAndPassword').mockResolvedValue(credential);
             jest.spyOn(service, 'current').mockReturnValue(cold('-(u|)', { u: user }));
-
             // call
-            const result = service.login(email, password);
+            const result = service.login(email, password, true);
 
             // expected
             const expected = cold('-(u|)', { u: user });
@@ -88,6 +90,20 @@ describe('AuthService', () => {
 
             // call
             const result = service.logout();
+
+            // expected
+            const expected = cold('');
+            expect(result).toBeObservable(expected);
+        });
+    });
+
+    describe('forgotPassword', () => {
+        it('should do nothing', () => {
+            // mock
+            jest.spyOn(auth, 'sendPasswordResetEmail').mockResolvedValue();
+
+            // call
+            const result = service.forgotPassword('test@gùail.com');
 
             // expected
             const expected = cold('');

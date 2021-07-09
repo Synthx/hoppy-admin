@@ -1,0 +1,9 @@
+input[type='checkbox'] {
+    @apply h-4 w-4 rounded-xl relative cursor-pointer;
+}
+
+input[type='checkbox']:checked {
+    background-color: #000;
+    border-left-color: #06f;
+    border-right-color: #06f;
+}

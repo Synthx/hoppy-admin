@@ -28,14 +28,12 @@ export class LoginComponent implements OnInit {
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required]],
+            rememberMe: false,
         });
     }
 
     ngOnInit(): void {
-        this.actions$.pipe(
-            ofType(authAction.loginError),
-            untilDestroyed(this),
-        ).subscribe(error => {
+        this.actions$.pipe(ofType(authAction.loginError), untilDestroyed(this)).subscribe(error => {
             console.error(error);
         });
     }
@@ -43,7 +41,7 @@ export class LoginComponent implements OnInit {
     login(): void {
         if (this.loginForm.invalid) return;
 
-        const { email, password } = this.loginForm.value;
-        this.authDispatcher.login(email, password);
+        const { email, password, rememberMe } = this.loginForm.value;
+        this.authDispatcher.login(email, password, rememberMe);
     }
 }

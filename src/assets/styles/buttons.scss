@@ -1,3 +1,7 @@
+.primary-link {
+    @apply text-primary;
+}
+
 // disable outline
 button:focus, button:active:focus, button.active:focus {
     outline: none !important;

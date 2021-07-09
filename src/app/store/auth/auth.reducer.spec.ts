@@ -49,7 +49,7 @@ describe('auth.reducer', () => {
 
     describe('auth/login', () => {
         describe('basic', () => {
-            const action = authAction.login({ email: '', password: '' });
+            const action = authAction.login({ email: '', password: '', rememberMe: true });
             const state = authReducer(authInitialState, action);
 
             it('should start loading', () => {
