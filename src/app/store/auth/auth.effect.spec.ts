@@ -126,17 +126,18 @@ describe('auth.effect', () => {
         it('should dispatch login-error action on error', () => {
             // given
             const action = authAction.login({ email: 'test@test.com', password: 'test', rememberMe: true });
-            const error = { code: 'oops' };
+            const error = { code: 'oops-code' };
 
             // mock
             jest.spyOn(authService, 'login').mockReturnValue(cold('-#', undefined, error));
+            jest.spyOn(translateService, 'get').mockReturnValue(cold('-t', { t: 'oops' }));
 
             // call
             actions$ = hot('-a', { a: action });
 
             // expect
             const completion = authAction.loginError({ error: 'oops' });
-            const expected = cold('--c', { c: completion });
+            const expected = cold('---c', { c: completion });
 
             expect(effect.login$).toBeObservable(expected);
         });

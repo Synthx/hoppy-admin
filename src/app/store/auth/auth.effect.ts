@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
+import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { catchError, delay, map, mapTo, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../shared/services/auth.service';
@@ -12,6 +13,7 @@ export class AuthEffect {
         private readonly actions$: Actions,
         private readonly router: Router,
         private readonly authService: AuthService,
+        private readonly translateService: TranslateService,
     ) {}
 
     init$ = createEffect(() => this.actions$.pipe(ofType(ROOT_EFFECTS_INIT), mapTo(authAction.load())));
@@ -34,7 +36,25 @@ export class AuthEffect {
             switchMap(({ email, password, rememberMe }) => {
                 return this.authService.login(email, password, rememberMe).pipe(
                     map(user => authAction.loginSuccess({ user })),
-                    catchError(error => of(authAction.loginError({ error: error.code }))),
+                    catchError(error => {
+                        let errorCode: string;
+                        switch (error?.code) {
+                            case 'auth/invalid-email':
+                            case 'auth/user-not-found':
+                            case 'auth/wrong-password':
+                                errorCode = 'invalidEmailPassword';
+                                break;
+                            case 'auth/user-disabled':
+                                errorCode = 'userDisabled';
+                                break;
+                            default:
+                                errorCode = 'unknown';
+                        }
+
+                        return this.translateService
+                            .get(`auth.login.error.${errorCode}`)
+                            .pipe(map(translation => authAction.loginError({ error: translation })));
+                    }),
                 );
             }),
         ),

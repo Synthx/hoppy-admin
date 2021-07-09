@@ -15,6 +15,7 @@ import { authAction } from '../../store/auth/auth.action';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
+    error?: string;
 
     loading$: Observable<boolean>;
 
@@ -33,8 +34,8 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.actions$.pipe(ofType(authAction.loginError), untilDestroyed(this)).subscribe(error => {
-            console.error(error);
+        this.actions$.pipe(ofType(authAction.loginError), untilDestroyed(this)).subscribe(({ error }) => {
+            this.error = error;
         });
     }
 
