@@ -1,5 +1,64 @@
 {
-  "language": {
-    "en": "English"
-  }
+    "language": {
+        "en": "English",
+        "fr": "Français"
+    },
+    "input": {
+        "email": "Email",
+        "password": "Mot de passe"
+    },
+    "navigation": {
+        "dashboard": {
+            "title": "Dashboard"
+        },
+        "beers": {
+            "title": "Bières"
+        },
+        "users": {
+            "title": "Utilisateurs"
+        },
+        "settings": {
+            "title": "Paramètres",
+            "logout": "Se déconnecter"
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Se connecter",
+            "subtitle": "Connectez-vous avant de continuer",
+            "action": "Se connecter",
+            "rememberMe": "Se souvenir de moi",
+            "forgotPassword": "Mot de passe oublié ?",
+            "error": {
+                "invalidEmailPassword": "Email ou mot de passe invalide",
+                "userDisabled": "Votre compte a été désactivé",
+                "unknown": "Problème technique, veuillez réessayer plus tard"
+            }
+        },
+        "logout": {
+            "title": "Vous avez été deconnecté",
+            "subtitle": "Redirection dans 5 secondes",
+            "goto": "Aller à la page"
+        },
+        "forgotPassword": {
+            "title": "Mot de passe oublié",
+            "subtitle": "Nous allons vous envoyer un lien de réinitialisation",
+            "action": "Envoyer",
+            "emailSent": {
+                "title": "Email envoyé",
+                "subtitle": "Si cette adresse email a été utilisé pour créer votre compte, un email pour réinitialiser votre mot de passe va vous être envoyé.",
+                "redirect": "Redirection en cours..."
+            },
+            "login": [
+                "Je me souviens de mon mot de passe",
+                "Se connecter"
+            ]
+        }
+    },
+    "router": {
+        "auth": {
+            "login": "Se connecter | Hoppy",
+            "forgotPassword": "Mot de passe oublié | Hoppy"
+        }
+    }
 }
