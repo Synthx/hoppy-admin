@@ -1,12 +1,12 @@
 <div class="flex flex-col items-stretch" *ngIf="(loading$ | async) === false; else loaderContainer">
     <img src="assets/images/logo.png" class="rounded-xl h-16 w-16 block md:hidden" alt="Hoppy" />
-    <div class="text-primary text-4xl font-bold leading-tight tracking-tight mt-6 md:mt-0">
+    <div class="text-primary text-3xl font-bold leading-tight tracking-tight mt-6 md:mt-0">
         {{ 'auth.login.title' | translate }}
     </div>
-    <div class="text-gray-400">
+    <div class="text-gray-400 text-sm">
         {{ 'auth.login.subtitle' | translate }}
     </div>
-    <div class="text-sm text-red-500 mt-4" *ngIf="error">
+    <div class="text-red-500 text-sm mt-4" *ngIf="error">
         {{ error }}
     </div>
     <form class="mt-4" [formGroup]="loginForm" (ngSubmit)="login()">
