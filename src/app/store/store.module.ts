@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.reducer';
 import { AuthEffect } from './auth/auth.effect';
 import { metaReducers } from './meta.reducer';
+import { RouterEffect } from './router/router.effect';
 import { SettingsEffect } from './settings/settings.effect';
 
 @NgModule({
@@ -12,7 +13,7 @@ import { SettingsEffect } from './settings/settings.effect';
         StoreModule.forRoot(appReducer, {
             metaReducers,
         }),
-        EffectsModule.forRoot([SettingsEffect, AuthEffect]),
+        EffectsModule.forRoot([SettingsEffect, AuthEffect, RouterEffect]),
         StoreRouterConnectingModule.forRoot(),
     ],
 })
