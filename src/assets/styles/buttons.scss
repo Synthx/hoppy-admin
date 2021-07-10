@@ -1,0 +1,20 @@
+.primary-link {
+    @apply text-primary;
+}
+
+// disable outline
+button:focus, button:active:focus, button.active:focus {
+    outline: none !important;
+}
+
+// rounded button
+.mat-button, .mat-flat-button, .mat-raised-button, .mat-stroked-button {
+    padding: 0 20px !important;
+    border-radius: 100px !important;
+}
+
+.mat-button-large {
+    height: 48px;
+    min-height: 48px;
+    max-height: 48px;
+}
