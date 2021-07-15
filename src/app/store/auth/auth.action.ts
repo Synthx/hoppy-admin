@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 
 const load = createAction('auth/load');
 const loadSuccess = createAction('auth/load-success', props<{ user: User | null }>());

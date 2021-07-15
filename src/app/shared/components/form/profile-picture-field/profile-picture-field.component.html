@@ -1,0 +1,20 @@
+<label class="h-28 w-28 rounded-full cursor-pointer flex bg-gray-200 relative" [for]="name">
+    <ng-container *ngIf="!preview; else previewContainer">
+        <mat-icon class="m-auto">add_a_photo</mat-icon>
+    </ng-container>
+    <ng-template #previewContainer>
+        <img class="h-full w-full rounded-full object-cover" alt="preview" [src]="preview">
+    </ng-template>
+    <span class="absolute h-28 w-28 rounded-full flex bg-black bg-opacity-50" *ngIf="loading">
+        <mat-spinner color="primary" class="m-auto" [diameter]="25"></mat-spinner>
+    </span>
+</label>
+<input
+    #pictureInput
+    class="hidden"
+    type="file"
+    accept="image/*"
+    [id]="name"
+    (click)="pictureInput.value = ''"
+    (change)="onFileSelected($event)"
+/>

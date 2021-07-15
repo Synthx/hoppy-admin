@@ -1,6 +1,9 @@
 @import 'src/assets/styles/material';
 @import 'src/assets/styles/buttons';
 @import 'src/assets/styles/patterns';
+@import 'src/assets/styles/dialog';
+
+@import '~animate.css/animate.min';
 
 @tailwind base;
 @tailwind components;

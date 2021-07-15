@@ -6,6 +6,6 @@
         *ngIf="!!user.avatar; else pseudoContainer"
     />
     <ng-template #pseudoContainer>
-        <span class="uppercase text-white m-auto">{{ user.pseudo.slice(0, 1) }}</span>
+        <span class="uppercase text-white m-auto">{{ user.pseudo?.slice(0, 1) }}</span>
     </ng-template>
 </div>

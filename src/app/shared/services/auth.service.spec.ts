@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { cold } from 'jest-marbles';
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 
 import { AuthService } from './auth.service';
 

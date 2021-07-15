@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { first, map, switchMap } from 'rxjs/operators';
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
+import { UserRole } from '../../models/user/user-role';
 import Auth = firebase.auth.Auth;
 
 @Injectable({
@@ -23,9 +25,14 @@ export class AuthService {
                     id: user.uid,
                     email: user.email!,
                     pseudo: user.displayName!,
+                    role: UserRole.USER,
                 };
             }),
         );
+    }
+
+    token(): Observable<string | null> {
+        return this.auth.idToken;
     }
 
     login(email: string, password: string, rememberMe: boolean): Observable<User> {

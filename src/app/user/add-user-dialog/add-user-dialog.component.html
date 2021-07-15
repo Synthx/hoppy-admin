@@ -1,0 +1,54 @@
+<div class="flex items-center">
+    <button mat-icon-button mat-dialog-close type="button">
+        <mat-icon>clear</mat-icon>
+    </button>
+    <div class="text-2xl">{{ 'user.add.title' | translate }}</div>
+</div>
+<form autocomplete="off" [formGroup]="addUserForm" (ngSubmit)="addUser()">
+    <mat-stepper orientation="vertical" #stepper>
+        <mat-step>
+            <ng-template matStepLabel>Test</ng-template>
+            <app-text-field type="email" name="email"></app-text-field>
+            <app-text-field type="text" class="mt-2 block" name="pseudo"></app-text-field>
+            <div class="flex items-center mt-2">
+                <app-password-field class="flex-1" name="password"></app-password-field>
+                <app-password-field class="flex-1 ml-2" name="confirmPassword"></app-password-field>
+            </div>
+            <button mat-flat-button matStepperNext type="button" color="primary" class="mt-4">
+                {{ 'button.next' | translate }}
+            </button>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Photo</ng-template>
+            <div class="flex flex-col">
+                <app-profile-picture-field name="avatar"></app-profile-picture-field>
+                <select formControlName="role">
+                    <option [value]="role" *ngFor="let role of userRoles">
+                        {{ role }}
+                    </option>
+                </select>
+                <div class="flex flex-row">
+                    <button mat-flat-button matStepperPrevious type="button">
+                        {{ 'button.previous' | translate }}
+                    </button>
+                    <button mat-flat-button matStepperNext type="button" color="primary">
+                        {{ 'button.next' | translate }}
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Validation</ng-template>
+            <app-user-preview [user]="addUserForm.value"></app-user-preview>
+            <button mat-flat-button matStepperPrevious type="button">
+                {{ 'button.previous' | translate }}
+            </button>
+            <button mat-flat-button type="submit" color="primary" [disabled]="addUserForm.invalid">
+                {{ 'button.add' | translate }}
+            </button>
+        </mat-step>
+    </mat-stepper>
+</form>
+<div class="loader-container" *ngIf="loading$ | async">
+    <mat-spinner color="primary" [diameter]="30"></mat-spinner>
+</div>

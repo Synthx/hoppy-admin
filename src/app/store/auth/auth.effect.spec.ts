@@ -6,7 +6,7 @@ import { createAction } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 import { AuthService } from '../../shared/services/auth.service';
 import { authAction } from './auth.action';
 import { AuthEffect } from './auth.effect';
@@ -68,7 +68,7 @@ describe('auth.effect', () => {
         });
     });
 
-    describe('load', () => {
+    describe('load$', () => {
         it('should dispatch load-success action', () => {
             // given
             const action = authAction.load();
@@ -104,7 +104,7 @@ describe('auth.effect', () => {
         });
     });
 
-    describe('login', () => {
+    describe('login$', () => {
         it('should dispatch login-success action', () => {
             // given
             const action = authAction.login({ email: 'test@test.com', password: 'test', rememberMe: true });
@@ -143,7 +143,7 @@ describe('auth.effect', () => {
         });
     });
 
-    describe('loginSuccess', () => {
+    describe('loginSuccess$', () => {
         it('should redirect to /dashboard page', () => {
             // given
             const user = { id: '1' } as User;
@@ -163,7 +163,7 @@ describe('auth.effect', () => {
         });
     });
 
-    describe('logout', () => {
+    describe('logout$', () => {
         it('should dispatch logout-success action', () => {
             // given
             const action = authAction.logout();
@@ -200,7 +200,7 @@ describe('auth.effect', () => {
         });
     });
 
-    describe('logoutSuccess', () => {
+    describe('logoutSuccess$', () => {
         it('should redirect to /auth/login page', fakeAsync(() => {
             // given
             const action = authAction.logoutSuccess();
@@ -221,7 +221,7 @@ describe('auth.effect', () => {
         }));
     });
 
-    describe('forgotPasswordSuccess', () => {
+    describe('forgotPasswordSuccess$', () => {
         it('should redirect to /auth/login page', fakeAsync(() => {
             // given
             const action = authAction.forgotPasswordSuccess();

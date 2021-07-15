@@ -1,4 +1,4 @@
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 import { authAction } from './auth.action';
 import { authInitialState, authReducer } from './auth.reducer';
 
