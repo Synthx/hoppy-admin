@@ -1,6 +1,6 @@
 export interface Query {
     page: number;
     size: number;
-    active?: string;
-    direction?: string;
+    active: string;
+    direction: 'asc' | 'desc' | '';
 }

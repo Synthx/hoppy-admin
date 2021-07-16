@@ -12,7 +12,7 @@ export class CustomDatasource<T> implements DataSource<T> {
     length$ = this.lengthSubject.asObservable();
     loading$ = this.loadingSubject.asObservable();
 
-    constructor(private readonly searchFunction: (params: any) => Observable<Page<T>>) {}
+    constructor(private readonly searchFunction: (params: Query) => Observable<Page<T>>) {}
 
     connect(_: CollectionViewer): Observable<T[]> {
         return this.dataSubject.asObservable();

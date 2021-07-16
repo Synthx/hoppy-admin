@@ -11,6 +11,8 @@ import { TextFieldComponent } from './components/form/text-field/text-field.comp
 import { PasswordFieldComponent } from './components/form/password-field/password-field.component';
 import { CheckboxComponent } from './components/form/checkbox/checkbox.component';
 import { ProfilePictureFieldComponent } from './components/form/profile-picture-field/profile-picture-field.component';
+import { materialProvider } from './material.provider';
+import { TimestampPipe } from './pipes/timestamp.pipe';
 
 @NgModule({
     declarations: [
@@ -19,6 +21,7 @@ import { ProfilePictureFieldComponent } from './components/form/profile-picture-
         PasswordFieldComponent,
         CheckboxComponent,
         ProfilePictureFieldComponent,
+        TimestampPipe,
     ],
     imports: [
         CommonModule,
@@ -40,6 +43,8 @@ import { ProfilePictureFieldComponent } from './components/form/profile-picture-
         PasswordFieldComponent,
         CheckboxComponent,
         ProfilePictureFieldComponent,
+        TimestampPipe,
     ],
+    providers: [...materialProvider],
 })
 export class SharedModule {}

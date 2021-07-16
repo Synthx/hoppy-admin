@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
@@ -8,22 +9,27 @@ import { Query } from '../../models/datasource/query';
 export class CrudService<T> {
     protected collection: AngularFirestoreCollection<T>;
 
-    constructor(readonly path: string, readonly firestore: AngularFirestore) {
-        this.collection = this.firestore.collection(path);
+    constructor(private readonly path: string, private readonly firestore: AngularFirestore) {
+        this.collection = this.firestore.collection<T>(path);
     }
 
     search(params: Query): Observable<Page<T>> {
         const startIndex = params.page * params.size;
 
-        return fromPromise(this.collection.ref.startAt(startIndex).limit(params.size).get()).pipe(
+        return fromPromise(
+            this.collection.ref
+                .orderBy(params.active, params.direction || 'desc')
+                .limit(params.size)
+                .get(),
+        ).pipe(
             map(query => {
                 return {
-                    content: [],
+                    content: query.docs.map(document => document.data()),
                     totalElements: query.size,
                     number: 0,
                     numberOfElements: 0,
-                    size: 0,
-                    totalPages: 0,
+                    size: params.size,
+                    totalPages: query.size / params.size + 1,
                 };
             }),
         );

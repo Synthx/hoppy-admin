@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { TranslateService } from '@ngx-translate/core';
+import dayjs from 'dayjs';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -31,6 +32,8 @@ export class SettingsEffect {
         this.actions$.pipe(
             ofType(settingsAction.changeLanguage),
             switchMap(({ language }) => {
+                // TODO: use locale in json file
+                dayjs().locale(language);
                 return this.translateService.use(language).pipe(
                     map(() => settingsAction.changeLanguageSuccess({ language })),
                     catchError(() => of(settingsAction.changeLanguageError())),

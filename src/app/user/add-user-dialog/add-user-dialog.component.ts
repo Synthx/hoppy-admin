@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { UserSelector } from '../../store/user/user-selector.service';
     templateUrl: './add-user-dialog.component.html',
     styleUrls: ['./add-user-dialog.component.scss'],
 })
-export class AddUserDialogComponent implements OnInit {
+export class AddUserDialogComponent {
     addUserForm: FormGroup;
 
     loading$: Observable<boolean>;
@@ -35,8 +35,6 @@ export class AddUserDialogComponent implements OnInit {
             emailVerified: true,
         });
     }
-
-    ngOnInit(): void {}
 
     addUser(): void {
         if (this.addUserForm.invalid) return;

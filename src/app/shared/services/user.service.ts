@@ -12,7 +12,7 @@ import { CrudService } from './crud.service';
 export class UserService extends CrudService<User> {
     private readonly endpointUrl = `${environment.apiUrl}/users`;
 
-    constructor(readonly firestore: AngularFirestore, private readonly http: HttpClient) {
+    constructor(firestore: AngularFirestore, private readonly http: HttpClient) {
         super('users', firestore);
     }
 
