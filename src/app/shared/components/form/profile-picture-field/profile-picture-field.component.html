@@ -3,7 +3,7 @@
         <mat-icon class="m-auto">add_a_photo</mat-icon>
     </ng-container>
     <ng-template #previewContainer>
-        <img class="h-full w-full rounded-full object-cover" alt="preview" [src]="preview">
+        <img class="h-full w-full rounded-full object-cover" alt="preview" [src]="preview" />
     </ng-template>
     <span class="absolute h-28 w-28 rounded-full flex bg-black bg-opacity-50" *ngIf="loading">
         <mat-spinner color="primary" class="m-auto" [diameter]="25"></mat-spinner>

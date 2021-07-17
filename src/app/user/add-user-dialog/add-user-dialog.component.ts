@@ -13,6 +13,8 @@ import { UserSelector } from '../../store/user/user-selector.service';
     styleUrls: ['./add-user-dialog.component.scss'],
 })
 export class AddUserDialogComponent {
+    static ID: string = 'add-user-dialog';
+
     addUserForm: FormGroup;
 
     loading$: Observable<boolean>;

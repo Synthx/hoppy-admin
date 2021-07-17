@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { UserService } from '../../shared/services/user.service';
+import { AddUserDialogComponent } from '../../user/add-user-dialog/add-user-dialog.component';
 import { DeleteUserDialogComponent } from '../../user/delete-user-dialog/delete-user-dialog.component';
 import { DisableUserDialogComponent } from '../../user/disable-user-dialog/disable-user-dialog.component';
 import { userAction } from './user.action';
@@ -36,8 +37,9 @@ export class UserEffect {
         () =>
             this.actions$.pipe(
                 ofType(userAction.createSuccess),
-                switchMap(() => this.translateService.get('user.add.success')),
+                switchMap(({ user }) => this.translateService.get('user.add.success', { email: user.email })),
                 tap(message => {
+                    this.dialog.getDialogById(AddUserDialogComponent.ID)?.close(true);
                     this.snackBar.open(message);
                 }),
             ),

@@ -44,18 +44,23 @@ export class UserComponent implements OnInit {
     }
 
     openAddUserDialog(): void {
-        this.dialog.open(AddUserDialogComponent, {
-            panelClass: [
-                'animate__animated',
-                'animate__slideInRight',
-                'animate__faster',
-                'fullscreen-dialog-container',
-            ],
-            maxHeight: '100vh',
-            height: '100vh',
-            maxWidth: '100vw',
-            width: '100vw',
-        });
+        this.dialog
+            .open(AddUserDialogComponent, {
+                id: AddUserDialogComponent.ID,
+                panelClass: [
+                    'animate__animated',
+                    'animate__slideInRight',
+                    'animate__faster',
+                    'fullscreen-dialog-container',
+                ],
+                maxHeight: '100vh',
+                height: '100vh',
+                maxWidth: '100vw',
+                width: '100vw',
+            })
+            .afterClosed()
+            .pipe(filter(e => !!e))
+            .subscribe(() => this.loadData());
     }
 
     openDeleteUserDialog(user: User): void {
