@@ -10,6 +10,7 @@ import { User } from '../models/user/user';
 import { UserService } from '../shared/services/user.service';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
+import { DisableUserDialogComponent } from './disable-user-dialog/disable-user-dialog.component';
 
 @UntilDestroy()
 @Component({
@@ -61,6 +62,17 @@ export class UserComponent implements OnInit {
         this.dialog
             .open(DeleteUserDialogComponent, {
                 id: DeleteUserDialogComponent.ID,
+                data: { user },
+            })
+            .afterClosed()
+            .pipe(filter(e => !!e))
+            .subscribe(() => this.loadData());
+    }
+
+    openDisableUserDialog(user: User): void {
+        this.dialog
+            .open(DisableUserDialogComponent, {
+                id: DisableUserDialogComponent.ID,
                 data: { user },
             })
             .afterClosed()

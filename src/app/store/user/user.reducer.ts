@@ -34,4 +34,17 @@ export const userReducer = createReducer(
         ...state,
         loading: false,
     })),
+    // disable
+    on(userAction.disable, state => ({
+        ...state,
+        loading: true,
+    })),
+    on(userAction.disableSuccess, state => ({
+        ...state,
+        loading: false,
+    })),
+    on(userAction.disableError, state => ({
+        ...state,
+        loading: false,
+    })),
 );

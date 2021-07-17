@@ -20,7 +20,8 @@
         "previous": "Précédent",
         "add": "Ajouter",
         "cancel": "Annuler",
-        "delete": "Supprimer"
+        "delete": "Supprimer",
+        "disable": "Désactiver"
     },
     "navigation": {
         "dashboard": {
@@ -45,10 +46,16 @@
         "delete": {
             "title": "Supprimer le compte",
             "warning": "La suppression d'un compte est définitive et irréversible.",
-            "success": "Compte supprimé avec succès"
+            "success": "{{email}} a été supprimé avec succès"
+        },
+        "disable": {
+            "title": "Désactiver le compte",
+            "warning": "Les utilisateurs dont le compte est désactivé ne pourront plus se connecter.",
+            "success": "{{email}} a été désativé avec succès"
         },
         "action": {
-            "delete": "Supprimer le compte"
+            "delete": "Supprimer le compte",
+            "disable": "Désactiver le compte"
         },
         "role": {
             "USER": "Utilisateur",
@@ -102,6 +109,6 @@
         "itemsPerPage": "Element par page",
         "nextPage": "Page suivante",
         "previousPage": "Page précédente",
-        "range": "{startIndex} - {endIndex} sur {length}"
+        "range": "{{startIndex}} - {{endIndex}} sur {{length}}"
     }
 }

@@ -13,9 +13,16 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
+import { DisableUserDialogComponent } from './disable-user-dialog/disable-user-dialog.component';
 
 @NgModule({
-    declarations: [UserComponent, AddUserDialogComponent, UserPreviewComponent, DeleteUserDialogComponent],
+    declarations: [
+        UserComponent,
+        AddUserDialogComponent,
+        UserPreviewComponent,
+        DeleteUserDialogComponent,
+        DisableUserDialogComponent,
+    ],
     imports: [
         CommonModule,
         UserRoutingModule,

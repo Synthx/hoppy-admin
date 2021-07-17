@@ -38,6 +38,14 @@
                     <mat-icon>more_horiz</mat-icon>
                 </button>
                 <mat-menu #actionMenu>
+                    <button
+                        mat-menu-item
+                        type="button"
+                        (click)="openDisableUserDialog(element)"
+                        *ngIf="!element.disabled"
+                    >
+                        {{ 'user.action.disable' | translate }}
+                    </button>
                     <button mat-menu-item type="button" (click)="openDeleteUserDialog(element)">
                         {{ 'user.action.delete' | translate }}
                     </button>

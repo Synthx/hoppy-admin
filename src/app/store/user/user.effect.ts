@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { UserService } from '../../shared/services/user.service';
 import { DeleteUserDialogComponent } from '../../user/delete-user-dialog/delete-user-dialog.component';
+import { DisableUserDialogComponent } from '../../user/disable-user-dialog/disable-user-dialog.component';
 import { userAction } from './user.action';
 
 @Injectable()
@@ -59,9 +60,34 @@ export class UserEffect {
         () =>
             this.actions$.pipe(
                 ofType(userAction.removeSuccess),
-                switchMap(({ email }) => this.translateService.get('user.remove.success')),
+                switchMap(({ email }) => this.translateService.get('user.remove.success', { email })),
                 tap(message => {
                     this.dialog.getDialogById(DeleteUserDialogComponent.ID)?.close(true);
+                    this.snackBar.open(message);
+                }),
+            ),
+        { dispatch: false },
+    );
+
+    disable$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(userAction.disable),
+            switchMap(({ user }) => {
+                return this.userService.update(user.id, { disabled: true }).pipe(
+                    map(() => userAction.disableSuccess({ email: user.email })),
+                    catchError(error => of(userAction.disableError({ error }))),
+                );
+            }),
+        ),
+    );
+
+    disableSuccess$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(userAction.disableSuccess),
+                switchMap(({ email }) => this.translateService.get('user.disable.success', { email })),
+                tap(message => {
+                    this.dialog.getDialogById(DisableUserDialogComponent.ID)?.close(true);
                     this.snackBar.open(message);
                 }),
             ),

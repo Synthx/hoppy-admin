@@ -53,6 +53,13 @@ export class CrudService<T> {
         );
     }
 
+    update(id: string, object: Partial<T>): Observable<T> {
+        return fromPromise(this.collection.doc(id).update(object)).pipe(
+            switchMap(() => this.get(id)),
+            map(object => object as T),
+        );
+    }
+
     delete(id: string): Observable<void> {
         return fromPromise(this.collection.doc(id).delete());
     }
