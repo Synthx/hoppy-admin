@@ -1,0 +1,28 @@
+.table-header {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 12px 24px;
+
+    @apply bg-gray-50;
+
+    .search-wrapper {
+        flex: 1;
+        margin-right: 12px;
+        display: flex;
+        padding: 0 12px;
+        border-radius: 6px;
+
+        @apply bg-gray-200;
+
+        mat-icon {
+            margin: auto 12px auto auto;
+        }
+
+        input {
+            flex: 1;
+            background: transparent;
+            outline: none;
+        }
+    }
+}

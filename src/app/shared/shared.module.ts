@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { TextFieldComponent } from './components/form/text-field/text-field.component';
@@ -14,6 +15,7 @@ import { ProfilePictureFieldComponent } from './components/form/profile-picture-
 import { materialProvider } from './material.provider';
 import { TimestampPipe } from './pipes/timestamp.pipe';
 import { CalloutComponent } from './components/callout/callout.component';
+import { TableHeaderComponent } from './components/table-header/table-header.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +26,7 @@ import { CalloutComponent } from './components/callout/callout.component';
         ProfilePictureFieldComponent,
         TimestampPipe,
         CalloutComponent,
+        TableHeaderComponent,
     ],
     imports: [
         CommonModule,
@@ -33,6 +36,7 @@ import { CalloutComponent } from './components/callout/callout.component';
         MatButtonModule,
         MatCheckboxModule,
         MatProgressSpinnerModule,
+        MatTooltipModule,
     ],
     exports: [
         CommonModule,
@@ -47,6 +51,7 @@ import { CalloutComponent } from './components/callout/callout.component';
         ProfilePictureFieldComponent,
         TimestampPipe,
         CalloutComponent,
+        TableHeaderComponent,
     ],
     providers: [...materialProvider],
 })

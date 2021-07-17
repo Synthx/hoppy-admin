@@ -85,7 +85,11 @@ export class UserComponent implements OnInit {
             .subscribe(() => this.loadData());
     }
 
-    loadData(): void {
+    refresh(): void {
+        this.loadData();
+    }
+
+    private loadData(): void {
         this.dataSource.load({
             page: this.paginator.pageIndex,
             size: this.paginator.pageSize,

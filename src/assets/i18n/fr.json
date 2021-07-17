@@ -21,7 +21,8 @@
         "add": "Ajouter",
         "cancel": "Annuler",
         "delete": "Supprimer",
-        "disable": "Désactiver"
+        "disable": "Désactiver",
+        "refresh": "Actualiser"
     },
     "navigation": {
         "dashboard": {

@@ -8,56 +8,58 @@
             </button>
         </div>
     </div>
-    <table mat-table matSort matSortActive="creationDate" matSortDirection="desc" [dataSource]="dataSource">
-        <ng-container matColumnDef="avatar">
-            <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element">
-                <app-user-avatar [user]="element"></app-user-avatar>
-            </td>
-        </ng-container>
-        <ng-container matColumnDef="pseudo">
-            <th mat-header-cell *matHeaderCellDef>{{ 'input.pseudo' | translate }}</th>
-            <td mat-cell *matCellDef="let element">{{ element.pseudo }}</td>
-        </ng-container>
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef>{{ 'input.email' | translate }}</th>
-            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-        </ng-container>
-        <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef>{{ 'input.role' | translate }}</th>
-            <td mat-cell *matCellDef="let element">{{ 'user.role.' + element.role | translate }}</td>
-        </ng-container>
-        <ng-container matColumnDef="creationDate">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef>{{ 'input.creationDate' | translate }}</th>
-            <td mat-cell *matCellDef="let element">{{ element.creationDate | timestamp }}</td>
-        </ng-container>
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element">
-                <button mat-icon-button type="button" [matMenuTriggerFor]="actionMenu">
-                    <mat-icon>more_horiz</mat-icon>
-                </button>
-                <mat-menu #actionMenu>
-                    <button
-                        mat-menu-item
-                        type="button"
-                        (click)="openDisableUserDialog(element)"
-                        *ngIf="!element.disabled"
-                    >
-                        {{ 'user.action.disable' | translate }}
+    <div class="table-wrapper">
+        <app-table-header (refreshClicked)="refresh()"></app-table-header>
+        <table mat-table matSort matSortActive="creationDate" matSortDirection="desc" [dataSource]="dataSource">
+            <ng-container matColumnDef="avatar">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <app-user-avatar [user]="element"></app-user-avatar>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="pseudo">
+                <th mat-header-cell *matHeaderCellDef>{{ 'input.pseudo' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{ element.pseudo }}</td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>{{ 'input.email' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+            </ng-container>
+            <ng-container matColumnDef="role">
+                <th mat-header-cell *matHeaderCellDef>{{ 'input.role' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{ 'user.role.' + element.role | translate }}</td>
+            </ng-container>
+            <ng-container matColumnDef="creationDate">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>{{ 'input.creationDate' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{ element.creationDate | timestamp }}</td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button type="button" [matMenuTriggerFor]="actionMenu">
+                        <mat-icon>more_horiz</mat-icon>
                     </button>
-                    <button mat-menu-item type="button" (click)="openDeleteUserDialog(element)">
-                        {{ 'user.action.delete' | translate }}
-                    </button>
-                </mat-menu>
-            </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-    <mat-paginator
-        [length]="dataSource.length$ | async"
-        [pageSize]="25"
-        [pageSizeOptions]="[10, 25, 50]"
-    ></mat-paginator>
+                    <mat-menu #actionMenu>
+                        <button
+                            mat-menu-item
+                            type="button"
+                            (click)="openDisableUserDialog(element)"
+                            *ngIf="!element.disabled"
+                        >
+                            {{ 'user.action.disable' | translate }}
+                        </button>
+                        <button mat-menu-item type="button" (click)="openDeleteUserDialog(element)">
+                            {{ 'user.action.delete' | translate }}
+                        </button>
+                    </mat-menu>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator [length]="dataSource.length$ | async"></mat-paginator>
+        <div class="loader-container" *ngIf="dataSource.loading$ | async">
+            <mat-spinner color="primary" [diameter]="30"></mat-spinner>
+        </div>
+    </div>
 </div>

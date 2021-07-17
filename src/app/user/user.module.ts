@@ -7,6 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -34,6 +35,7 @@ import { DisableUserDialogComponent } from './disable-user-dialog/disable-user-d
         MatPaginatorModule,
         MatSortModule,
         MatMenuModule,
+        MatTooltipModule,
     ],
 })
 export class UserModule {}
