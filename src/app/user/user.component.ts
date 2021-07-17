@@ -8,6 +8,7 @@ import { filter } from 'rxjs/operators';
 import { CustomDatasource } from '../models/datasource/custom-datasource';
 import { User } from '../models/user/user';
 import { UserService } from '../shared/services/user.service';
+import { ActivateUserDialogComponent } from './activate-user-dialog/activate-user-dialog.component';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 import { DisableUserDialogComponent } from './disable-user-dialog/disable-user-dialog.component';
@@ -78,6 +79,17 @@ export class UserComponent implements OnInit {
         this.dialog
             .open(DisableUserDialogComponent, {
                 id: DisableUserDialogComponent.ID,
+                data: { user },
+            })
+            .afterClosed()
+            .pipe(filter(e => !!e))
+            .subscribe(() => this.loadData());
+    }
+
+    openActivateUserDialog(user: User): void {
+        this.dialog
+            .open(ActivateUserDialogComponent, {
+                id: ActivateUserDialogComponent.ID,
                 data: { user },
             })
             .afterClosed()

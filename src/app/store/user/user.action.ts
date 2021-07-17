@@ -13,6 +13,10 @@ const disable = createAction('user/disable', props<{ user: User }>());
 const disableSuccess = createAction('user/disable-success', props<{ email: string }>());
 const disableError = createAction('user/disable-error', props<{ error: any }>());
 
+const activate = createAction('user/activate', props<{ user: User }>());
+const activateSuccess = createAction('user/activate-success', props<{ email: string }>());
+const activateError = createAction('user/activate-error', props<{ error: any }>());
+
 export const userAction = {
     create,
     createSuccess,
@@ -23,4 +27,7 @@ export const userAction = {
     disable,
     disableSuccess,
     disableError,
+    activate,
+    activateSuccess,
+    activateError,
 };

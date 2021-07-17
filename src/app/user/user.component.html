@@ -52,10 +52,15 @@
                             mat-menu-item
                             type="button"
                             (click)="openDisableUserDialog(element)"
-                            *ngIf="!element.disabled"
+                            *ngIf="!element.disabled; else activateButton"
                         >
                             {{ 'user.action.disable' | translate }}
                         </button>
+                        <ng-template #activateButton>
+                            <button mat-menu-item type="button" (click)="openActivateUserDialog(element)">
+                                {{ 'user.action.activate' | translate }}
+                            </button>
+                        </ng-template>
                         <button mat-menu-item type="button" (click)="openDeleteUserDialog(element)">
                             {{ 'user.action.delete' | translate }}
                         </button>

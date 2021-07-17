@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { SuccessNotificationComponent } from '../../shared/components/success-notification/success-notification.component';
 import { UserService } from '../../shared/services/user.service';
+import { ActivateUserDialogComponent } from '../../user/activate-user-dialog/activate-user-dialog.component';
 import { AddUserDialogComponent } from '../../user/add-user-dialog/add-user-dialog.component';
 import { DeleteUserDialogComponent } from '../../user/delete-user-dialog/delete-user-dialog.component';
 import { DisableUserDialogComponent } from '../../user/disable-user-dialog/disable-user-dialog.component';
@@ -95,6 +96,33 @@ export class UserEffect {
                 switchMap(({ email }) => this.translateService.get('user.disable.success', { email })),
                 tap(message => {
                     this.dialog.getDialogById(DisableUserDialogComponent.ID)?.close(true);
+                    this.snackBar.openFromComponent(SuccessNotificationComponent, {
+                        data: message,
+                    });
+                }),
+            ),
+        { dispatch: false },
+    );
+
+    activate$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(userAction.activate),
+            switchMap(({ user }) => {
+                return this.userService.update(user.id, { disabled: false }).pipe(
+                    map(() => userAction.activateSuccess({ email: user.email })),
+                    catchError(error => of(userAction.activateError({ error }))),
+                );
+            }),
+        ),
+    );
+
+    activateSuccess$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(userAction.activateSuccess),
+                switchMap(({ email }) => this.translateService.get('user.activate.success', { email })),
+                tap(message => {
+                    this.dialog.getDialogById(ActivateUserDialogComponent.ID)?.close(true);
                     this.snackBar.openFromComponent(SuccessNotificationComponent, {
                         data: message,
                     });

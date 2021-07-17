@@ -47,4 +47,17 @@ export const userReducer = createReducer(
         ...state,
         loading: false,
     })),
+    // activate
+    on(userAction.activate, state => ({
+        ...state,
+        loading: true,
+    })),
+    on(userAction.activateSuccess, state => ({
+        ...state,
+        loading: false,
+    })),
+    on(userAction.activateError, state => ({
+        ...state,
+        loading: false,
+    })),
 );

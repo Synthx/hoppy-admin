@@ -19,7 +19,7 @@
             align-items: center;
             justify-content: space-between;
 
-            @apply font-medium text-xl text-black;
+            @apply text-xl text-black;
 
             button[mat-icon-button] {
                 @apply text-gray-400;

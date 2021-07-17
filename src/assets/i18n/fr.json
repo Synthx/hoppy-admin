@@ -23,7 +23,8 @@
         "cancel": "Annuler",
         "delete": "Supprimer",
         "disable": "Désactiver",
-        "refresh": "Actualiser"
+        "refresh": "Actualiser",
+        "activate": "Activer"
     },
     "navigation": {
         "dashboard": {
@@ -54,11 +55,17 @@
         "disable": {
             "title": "Désactiver le compte",
             "warning": "Les utilisateurs dont le compte est désactivé ne pourront plus se connecter.",
-            "success": "{{email}} a été désativé avec succès"
+            "success": "{{email}} a été désactivé avec succès"
+        },
+        "activate": {
+            "title": "Activer le compte",
+            "warning": "Les utilisateurs dont le compte est activé pourront se reconnecter",
+            "success": "{{email}} a été activé avec succès"
         },
         "action": {
             "delete": "Supprimer le compte",
-            "disable": "Désactiver le compte"
+            "disable": "Désactiver le compte",
+            "activate": "Activer le compte"
         },
         "status": {
             "active": "Actif",

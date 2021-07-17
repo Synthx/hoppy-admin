@@ -21,4 +21,8 @@ export class UserDispatcher {
     disable(user: User): void {
         this.store.dispatch(userAction.disable({ user }));
     }
+
+    activate(user: User): void {
+        this.store.dispatch(userAction.activate({ user }));
+    }
 }

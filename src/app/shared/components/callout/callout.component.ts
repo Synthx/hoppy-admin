@@ -10,5 +10,5 @@ export class CalloutComponent {
     icon?: string;
 
     @Input()
-    type!: 'danger';
+    type!: 'danger' | 'info';
 }
