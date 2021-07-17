@@ -12,12 +12,15 @@
         "pseudo": "Pseudo",
         "confirmPassword": "Confirmer",
         "role": "Role",
-        "creationDate": "Date de création"
+        "creationDate": "Date de création",
+        "account": "Compte"
     },
     "button": {
         "next": "Suivant",
         "previous": "Précédent",
-        "add": "Ajouter"
+        "add": "Ajouter",
+        "cancel": "Annuler",
+        "delete": "Supprimer"
     },
     "navigation": {
         "dashboard": {
@@ -38,6 +41,14 @@
         "title": "Utilisateurs",
         "add": {
             "title": "Ajouter un nouvel utilisateur"
+        },
+        "delete": {
+            "title": "Supprimer le compte",
+            "warning": "La suppression d'un compte est définitive et irréversible.",
+            "success": "Compte supprimé avec succès"
+        },
+        "action": {
+            "delete": "Supprimer le compte"
         },
         "role": {
             "USER": "Utilisateur",

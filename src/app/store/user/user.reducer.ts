@@ -21,4 +21,17 @@ export const userReducer = createReducer(
         ...state,
         loading: false,
     })),
+    // remove
+    on(userAction.remove, state => ({
+        ...state,
+        loading: true,
+    })),
+    on(userAction.removeSuccess, state => ({
+        ...state,
+        loading: false,
+    })),
+    on(userAction.removeError, state => ({
+        ...state,
+        loading: false,
+    })),
 );

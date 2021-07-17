@@ -1,0 +1,21 @@
+.callout-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 48px;
+    margin-bottom: 24px;
+    padding: 12px 24px;
+
+    &.danger {
+        background-color: #fbe9e7;
+        color: #d32f2f;
+    }
+
+    mat-icon {
+        margin-right: 12px;
+    }
+
+    span {
+        @apply text-sm;
+    }
+}

@@ -12,4 +12,8 @@ export class UserDispatcher {
     create(user: User): void {
         this.store.dispatch(userAction.create({ user }));
     }
+
+    remove(user: User): void {
+        this.store.dispatch(userAction.remove({ user }));
+    }
 }

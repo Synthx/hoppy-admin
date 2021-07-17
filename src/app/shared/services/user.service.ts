@@ -19,4 +19,8 @@ export class UserService extends CrudService<User> {
     add(user: User): Observable<User> {
         return this.http.post<User>(this.endpointUrl, user);
     }
+
+    delete(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.endpointUrl}/users`);
+    }
 }

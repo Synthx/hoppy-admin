@@ -4,10 +4,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { merge } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { CustomDatasource } from '../models/datasource/custom-datasource';
 import { User } from '../models/user/user';
 import { UserService } from '../shared/services/user.service';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
+import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 
 @UntilDestroy()
 @Component({
@@ -53,6 +55,17 @@ export class UserComponent implements OnInit {
             maxWidth: '100vw',
             width: '100vw',
         });
+    }
+
+    openDeleteUserDialog(user: User): void {
+        this.dialog
+            .open(DeleteUserDialogComponent, {
+                id: DeleteUserDialogComponent.ID,
+                data: { user },
+            })
+            .afterClosed()
+            .pipe(filter(e => !!e))
+            .subscribe(() => this.loadData());
     }
 
     loadData(): void {

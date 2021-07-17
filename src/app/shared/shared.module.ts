@@ -13,6 +13,7 @@ import { CheckboxComponent } from './components/form/checkbox/checkbox.component
 import { ProfilePictureFieldComponent } from './components/form/profile-picture-field/profile-picture-field.component';
 import { materialProvider } from './material.provider';
 import { TimestampPipe } from './pipes/timestamp.pipe';
+import { CalloutComponent } from './components/callout/callout.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { TimestampPipe } from './pipes/timestamp.pipe';
         CheckboxComponent,
         ProfilePictureFieldComponent,
         TimestampPipe,
+        CalloutComponent,
     ],
     imports: [
         CommonModule,
@@ -44,6 +46,7 @@ import { TimestampPipe } from './pipes/timestamp.pipe';
         CheckboxComponent,
         ProfilePictureFieldComponent,
         TimestampPipe,
+        CalloutComponent,
     ],
     providers: [...materialProvider],
 })

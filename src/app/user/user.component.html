@@ -37,7 +37,11 @@
                 <button mat-icon-button type="button" [matMenuTriggerFor]="actionMenu">
                     <mat-icon>more_horiz</mat-icon>
                 </button>
-                <mat-menu #actionMenu></mat-menu>
+                <mat-menu #actionMenu>
+                    <button mat-menu-item type="button" (click)="openDeleteUserDialog(element)">
+                        {{ 'user.action.delete' | translate }}
+                    </button>
+                </mat-menu>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
