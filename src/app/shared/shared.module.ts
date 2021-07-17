@@ -16,6 +16,7 @@ import { materialProvider } from './material.provider';
 import { TimestampPipe } from './pipes/timestamp.pipe';
 import { CalloutComponent } from './components/callout/callout.component';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
+import { SuccessNotificationComponent } from './components/success-notification/success-notification.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { TableHeaderComponent } from './components/table-header/table-header.com
         TimestampPipe,
         CalloutComponent,
         TableHeaderComponent,
+        SuccessNotificationComponent,
     ],
     imports: [
         CommonModule,

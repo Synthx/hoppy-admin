@@ -5,6 +5,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { SuccessNotificationComponent } from '../../shared/components/success-notification/success-notification.component';
 import { UserService } from '../../shared/services/user.service';
 import { AddUserDialogComponent } from '../../user/add-user-dialog/add-user-dialog.component';
 import { DeleteUserDialogComponent } from '../../user/delete-user-dialog/delete-user-dialog.component';
@@ -40,7 +41,9 @@ export class UserEffect {
                 switchMap(({ user }) => this.translateService.get('user.add.success', { email: user.email })),
                 tap(message => {
                     this.dialog.getDialogById(AddUserDialogComponent.ID)?.close(true);
-                    this.snackBar.open(message);
+                    this.snackBar.openFromComponent(SuccessNotificationComponent, {
+                        data: message,
+                    });
                 }),
             ),
         { dispatch: false },
@@ -65,7 +68,9 @@ export class UserEffect {
                 switchMap(({ email }) => this.translateService.get('user.remove.success', { email })),
                 tap(message => {
                     this.dialog.getDialogById(DeleteUserDialogComponent.ID)?.close(true);
-                    this.snackBar.open(message);
+                    this.snackBar.openFromComponent(SuccessNotificationComponent, {
+                        data: message,
+                    });
                 }),
             ),
         { dispatch: false },
@@ -90,7 +95,9 @@ export class UserEffect {
                 switchMap(({ email }) => this.translateService.get('user.disable.success', { email })),
                 tap(message => {
                     this.dialog.getDialogById(DisableUserDialogComponent.ID)?.close(true);
-                    this.snackBar.open(message);
+                    this.snackBar.openFromComponent(SuccessNotificationComponent, {
+                        data: message,
+                    });
                 }),
             ),
         { dispatch: false },
