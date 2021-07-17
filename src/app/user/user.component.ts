@@ -19,7 +19,7 @@ import { DisableUserDialogComponent } from './disable-user-dialog/disable-user-d
     styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
-    displayedColumns: string[] = ['avatar', 'email', 'pseudo', 'role', 'creationDate', 'action'];
+    displayedColumns: string[] = ['avatar', 'email', 'pseudo', 'role', 'creationDate', 'status', 'action'];
     dataSource: CustomDatasource<User>;
 
     @ViewChild(MatPaginator, { static: true })

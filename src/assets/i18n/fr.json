@@ -13,7 +13,8 @@
         "confirmPassword": "Confirmer",
         "role": "Role",
         "creationDate": "Date de création",
-        "account": "Compte"
+        "account": "Compte",
+        "status": "Statut"
     },
     "button": {
         "next": "Suivant",
@@ -58,6 +59,10 @@
         "action": {
             "delete": "Supprimer le compte",
             "disable": "Désactiver le compte"
+        },
+        "status": {
+            "active": "Actif",
+            "disabled": "Désactivé"
         },
         "role": {
             "USER": "Utilisateur",

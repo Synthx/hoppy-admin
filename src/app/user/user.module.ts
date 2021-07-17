@@ -15,6 +15,8 @@ import { UserComponent } from './user.component';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 import { DisableUserDialogComponent } from './disable-user-dialog/disable-user-dialog.component';
+import { UserStatusIndicatorComponent } from './user-status-indicator/user-status-indicator.component';
+import { UserRoleIndicatorComponent } from './user-role-indicator/user-role-indicator.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +25,8 @@ import { DisableUserDialogComponent } from './disable-user-dialog/disable-user-d
         UserPreviewComponent,
         DeleteUserDialogComponent,
         DisableUserDialogComponent,
+        UserStatusIndicatorComponent,
+        UserRoleIndicatorComponent,
     ],
     imports: [
         CommonModule,

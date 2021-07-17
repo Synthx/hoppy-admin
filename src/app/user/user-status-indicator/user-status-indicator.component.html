@@ -1,0 +1,8 @@
+<ng-container *ngIf="disabled; else activeContainer">
+    <mat-icon class="text-red-500">clear</mat-icon>
+    <span>{{ 'user.status.disabled' | translate }}</span>
+</ng-container>
+<ng-template #activeContainer>
+    <mat-icon class="text-green-500">check</mat-icon>
+    <span>{{ 'user.status.active' | translate }}</span>
+</ng-template>
