@@ -21,10 +21,10 @@ export class UserService extends CrudService<User> {
     }
 
     update(id: string, user: Partial<User>): Observable<User> {
-        return this.http.patch<User>(`${this.endpointUrl}/users/${id}`, user);
+        return this.http.patch<User>(`${this.endpointUrl}/${id}`, user);
     }
 
     delete(id: string): Observable<void> {
-        return this.http.delete<void>(`${this.endpointUrl}/users`);
+        return this.http.delete<void>(`${this.endpointUrl}/${id}`);
     }
 }
