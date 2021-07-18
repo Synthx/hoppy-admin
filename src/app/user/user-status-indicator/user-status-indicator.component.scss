@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+        @apply mr-2;
+    }
+
+    span {
+        @apply text-sm;
+    }
+}

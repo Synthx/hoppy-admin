@@ -1,0 +1,12 @@
+<div class="table-header">
+    <div class="search-wrapper">
+        <mat-icon>search</mat-icon>
+        <input type="search" />
+        <button mat-icon-button type="button">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </div>
+    <button mat-icon-button type="button" [matTooltip]="'button.refresh' | translate" (click)="refreshClicked.emit()">
+        <mat-icon>refresh</mat-icon>
+    </button>
+</div>

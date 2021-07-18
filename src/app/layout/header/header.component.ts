@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 import { AuthSelector } from '../../store/auth/auth-selector.service';
 import { SettingsDispatcher } from '../../store/settings/settings-dispatcher.service';
 import { SettingsSelector } from '../../store/settings/settings-selector.service';

@@ -1,4 +1,4 @@
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 import { AppState } from '../app.state';
 import { authSelector } from './auth.selector';
 

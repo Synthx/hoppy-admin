@@ -11,7 +11,13 @@
         <app-navigation-group [title]="'navigation.beers.title' | translate">
             <app-navigation-item icon="home" label="Liste" link="/beers"></app-navigation-item>
         </app-navigation-group>
-        <app-navigation-group [title]="'navigation.users.title' | translate"></app-navigation-group>
+        <app-navigation-group [title]="'navigation.users.title' | translate">
+            <app-navigation-item
+                icon="people"
+                link="/users"
+                [label]="'navigation.users.title' | translate"
+            ></app-navigation-item>
+        </app-navigation-group>
         <app-navigation-group [title]="'navigation.settings.title' | translate">
             <app-navigation-item
                 icon="settings"

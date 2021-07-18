@@ -1,0 +1,59 @@
+.fullscreen-dialog-container {
+    .mat-dialog-container {
+        padding: 0;
+        border-radius: 0;
+    }
+}
+
+.dialog-container {
+    .mat-dialog-container {
+        padding: 0;
+        border-radius: 16px !important;
+        position: relative;
+
+        @apply bg-white;
+
+        .dialog-header {
+            padding: 24px 24px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @apply text-xl text-black;
+
+            button[mat-icon-button] {
+                @apply text-gray-400;
+            }
+        }
+
+        .dialog-body {
+            padding: 0 24px;
+
+            .input-container {
+                display: flex;
+                flex-direction: column;
+
+                .input-label {
+                    @apply text-sm text-gray-400;
+                }
+
+                .input-static-value {
+                    @apply text-base text-black;
+                }
+            }
+        }
+
+        .dialog-actions {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap-reverse;
+            min-height: 36px;
+
+            button[mat-dialog-close] {
+                @apply text-gray-400;
+            }
+        }
+    }
+}

@@ -3,9 +3,28 @@
         "en": "English",
         "fr": "Français"
     },
+    "date": {
+        "format": "DD/MM/YYYY"
+    },
     "input": {
         "email": "Email",
-        "password": "Mot de passe"
+        "password": "Mot de passe",
+        "pseudo": "Pseudo",
+        "confirmPassword": "Confirmer",
+        "role": "Role",
+        "creationDate": "Date de création",
+        "account": "Compte",
+        "status": "Statut"
+    },
+    "button": {
+        "next": "Suivant",
+        "previous": "Précédent",
+        "add": "Ajouter",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "disable": "Désactiver",
+        "refresh": "Actualiser",
+        "activate": "Activer"
     },
     "navigation": {
         "dashboard": {
@@ -20,6 +39,42 @@
         "settings": {
             "title": "Paramètres",
             "logout": "Se déconnecter"
+        }
+    },
+    "user": {
+        "title": "Utilisateurs",
+        "add": {
+            "title": "Ajouter un nouvel utilisateur",
+            "success": "{{email}} a été ajouté avec succès"
+        },
+        "delete": {
+            "title": "Supprimer le compte",
+            "warning": "La suppression d'un compte est définitive et irréversible.",
+            "success": "{{email}} a été supprimé avec succès"
+        },
+        "disable": {
+            "title": "Désactiver le compte",
+            "warning": "Les utilisateurs dont le compte est désactivé ne pourront plus se connecter.",
+            "success": "{{email}} a été désactivé avec succès"
+        },
+        "activate": {
+            "title": "Activer le compte",
+            "warning": "Les utilisateurs dont le compte est activé pourront se reconnecter",
+            "success": "{{email}} a été activé avec succès"
+        },
+        "action": {
+            "delete": "Supprimer le compte",
+            "disable": "Désactiver le compte",
+            "activate": "Activer le compte"
+        },
+        "status": {
+            "active": "Actif",
+            "disabled": "Désactivé"
+        },
+        "role": {
+            "USER": "Utilisateur",
+            "GUEST": "Visiteur",
+            "ADMIN": "Administrateur"
         }
     },
     "auth": {
@@ -59,6 +114,15 @@
         "auth": {
             "login": "Se connecter | Hoppy",
             "forgotPassword": "Mot de passe oublié | Hoppy"
-        }
+        },
+        "users": "Utilisateurs | Hoppy"
+    },
+    "paginator": {
+        "firstPage": "Première page",
+        "lastPage": "Dernière page",
+        "itemsPerPage": "Element par page",
+        "nextPage": "Page suivante",
+        "previousPage": "Page précédente",
+        "range": "{{startIndex}} - {{endIndex}} sur {{length}}"
     }
 }

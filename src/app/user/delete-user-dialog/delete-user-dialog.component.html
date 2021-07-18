@@ -1,0 +1,30 @@
+<div class="dialog-header">
+    {{ 'user.delete.title' | translate }}
+    <button mat-icon-button mat-dialog-close type="button">
+        <mat-icon>clear</mat-icon>
+    </button>
+</div>
+<div class="dialog-body">
+    <app-callout icon="warning" type="danger">
+        {{ 'user.delete.warning' | translate }}
+    </app-callout>
+    <div class="input-container">
+        <div class="input-label">
+            {{ 'input.account' | translate }}
+        </div>
+        <div class="input-static-value">
+            {{ user.email }}
+        </div>
+    </div>
+</div>
+<div class="dialog-actions">
+    <button mat-flat-button mat-dialog-close type="button">
+        {{ 'button.cancel' | translate }}
+    </button>
+    <button mat-flat-button color="warn" type="button" (click)="remove()">
+        {{ 'button.delete' | translate }}
+    </button>
+</div>
+<div class="loader-container" *ngIf="loading$ | async">
+    <mat-spinner color="primary" [diameter]="30"></mat-spinner>
+</div>

@@ -52,14 +52,14 @@ describe('router.effect', () => {
             actions$ = hot('-a', { a: routerNavigatedAction });
 
             // mock
-            routerSelector.titleKey$ = cold('-k', { k: 'key' });
+            routerSelector.titleKey$ = hot('-k', { k: 'key' });
             jest.spyOn(translateService, 'get').mockReturnValue(cold('-(t|)', { t: 'test' }));
             jest.spyOn(titleService, 'setTitle').mockReturnValue();
 
             // expect
             expect(effects.routeChanged$).toSatisfyOnFlush(() => {
-                expect(titleService).toHaveBeenCalledTimes(1);
-                expect(titleService).toHaveBeenCalledWith('test');
+                expect(titleService.setTitle).toHaveBeenCalledTimes(1);
+                expect(titleService.setTitle).toHaveBeenCalledWith('test');
             });
         });
     });
