@@ -24,7 +24,7 @@
                 <app-profile-picture-field name="avatar"></app-profile-picture-field>
                 <select formControlName="role">
                     <option [value]="role" *ngFor="let role of userRoles">
-                        {{ role }}
+                        {{ 'user.role.' + role | translate }}
                     </option>
                 </select>
                 <div class="flex flex-row">
