@@ -3,6 +3,7 @@ import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core
 import { TranslateService } from '@ngx-translate/core';
 import dayjs from 'dayjs';
 import { map } from 'rxjs/operators';
+import { Timestamp } from '../../models/timestamp';
 
 @Pipe({
     name: 'timestamp',
@@ -19,13 +20,14 @@ export class TimestampPipe implements OnDestroy, PipeTransform {
         this.asyncPipe.ngOnDestroy();
     }
 
-    transform(value: number, relative: boolean = false): string | null {
+    transform(value: Timestamp, relative: boolean = false): string | null {
+        const date = dayjs.unix(value.seconds);
         if (relative) {
-            return dayjs().to(dayjs(value));
+            return dayjs().to(date);
         }
 
         return this.asyncPipe.transform(
-            this.translateService.get('date.format').pipe(map(format => dayjs(value).format(format))),
+            this.translateService.get('date.format').pipe(map(format => date.format(format))),
         );
     }
 }
