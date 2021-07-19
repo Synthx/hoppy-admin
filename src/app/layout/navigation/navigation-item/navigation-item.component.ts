@@ -13,8 +13,11 @@ export class NavigationItemComponent {
     label!: string;
 
     @Input()
+    link!: string;
+
+    @Input()
     subtitle?: string;
 
     @Input()
-    link!: string;
+    exact: boolean = false;
 }

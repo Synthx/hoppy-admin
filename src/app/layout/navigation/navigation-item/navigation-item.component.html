@@ -1,6 +1,11 @@
 <div class="navigation-item-wrapper">
-    <a class="navigation-item" routerLinkActive="navigation-item-active" [routerLink]="link">
-        <mat-icon class="navigation-item-icon">{{ icon }}</mat-icon>
+    <a
+        class="navigation-item"
+        routerLinkActive="navigation-item-active"
+        [routerLinkActiveOptions]="{ exact: exact }"
+        [routerLink]="link"
+    >
+        <mat-icon class="navigation-item-icon material-icons-outlined">{{ icon }}</mat-icon>
         <div class="flex flex-col">
             <div class="navigation-item-title">
                 <span>{{ label }}</span>

@@ -5,11 +5,25 @@
         </div>
     </div>
     <div class="navigation-content">
-        <app-navigation-group [title]="'navigation.dashboard.title' | translate" subtitle="test">
-            <app-navigation-item icon="home" label="Dashboard" link="/dashboard"></app-navigation-item>
+        <app-navigation-group [title]="'navigation.dashboard.title' | translate">
+            <app-navigation-item
+                icon="home"
+                link="/dashboard"
+                [label]="'navigation.dashboard.title' | translate"
+            ></app-navigation-item>
         </app-navigation-group>
         <app-navigation-group [title]="'navigation.beers.title' | translate">
-            <app-navigation-item icon="home" label="Liste" link="/beers"></app-navigation-item>
+            <app-navigation-item
+                icon="sports_bar"
+                link="/beers"
+                [label]="'navigation.beers.list' | translate"
+                [exact]="true"
+            ></app-navigation-item>
+            <app-navigation-item
+                icon="palette"
+                link="/beers/colors"
+                [label]="'navigation.beers.colors' | translate"
+            ></app-navigation-item>
         </app-navigation-group>
         <app-navigation-group [title]="'navigation.users.title' | translate">
             <app-navigation-item
