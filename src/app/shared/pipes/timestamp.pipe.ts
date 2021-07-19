@@ -3,7 +3,7 @@ import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core
 import { TranslateService } from '@ngx-translate/core';
 import dayjs from 'dayjs';
 import { map } from 'rxjs/operators';
-import { Timestamp } from '../../models/timestamp';
+import { Timestamp } from '../../models/crud/timestamp';
 
 @Pipe({
     name: 'timestamp',

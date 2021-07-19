@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { Create } from '../../models/crud/create';
+import { Update } from '../../models/crud/update';
 import { User } from '../../models/user/user';
 import { CrudService } from './crud.service';
 
@@ -18,11 +20,11 @@ export class UserService extends CrudService<User> {
         super('users', firestore);
     }
 
-    add(user: User): Observable<User> {
+    add(user: Create<User>): Observable<User> {
         return this.http.post<User>(this.endpointUrl, user);
     }
 
-    update(id: string, user: Partial<User>): Observable<User> {
+    update(id: string, user: Update<User>): Observable<User> {
         return this.http.patch<User>(`${this.endpointUrl}/${id}`, user);
     }
 

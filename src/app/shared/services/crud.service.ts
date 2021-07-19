@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { first, map, switchMap } from 'rxjs/operators';
+import { Auditable } from '../../models/crud/auditable';
+import { Create } from '../../models/crud/create';
+import { Update } from '../../models/crud/update';
 import { Page } from '../../models/datasource/page';
 import { Query } from '../../models/datasource/query';
 
-export class CrudService<T> {
+export class CrudService<T extends Auditable> {
     protected collection: AngularFirestoreCollection<T>;
 
     constructor(private readonly path: string, private readonly firestore: AngularFirestore) {
@@ -46,14 +48,14 @@ export class CrudService<T> {
             .pipe(map(snapshot => snapshot.data()));
     }
 
-    add(object: T): Observable<T> {
-        return fromPromise(this.collection.add(object)).pipe(
+    add(object: Create<T>): Observable<T> {
+        return fromPromise(this.collection.add(object as T)).pipe(
             switchMap(ref => fromPromise(ref.get())),
             map(snapshot => snapshot.data()!),
         );
     }
 
-    update(id: string, object: Partial<T>): Observable<T> {
+    update(id: string, object: Update<T>): Observable<T> {
         return fromPromise(this.collection.doc(id).update(object)).pipe(
             switchMap(() => this.get(id)),
             map(object => object as T),

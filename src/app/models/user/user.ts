@@ -1,4 +1,4 @@
-import { Auditable } from '../auditable';
+import { Auditable } from '../crud/auditable';
 import { UserRole } from './user-role';
 
 export interface User extends Auditable {
